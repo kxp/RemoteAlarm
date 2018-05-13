@@ -21,7 +21,12 @@ namespace RemoteAlarm
         /// </value>
         /// <version author="Andre Cachopas" date="13/05/2018" version="1.0" machine="KLAP"></version>
         public bool Active { get; set; }
-        
+
+        public override string ToString()
+        {
+            return Weekday.ToString();
+        }
+
         public DaySelection()
         {
             Active = false;
