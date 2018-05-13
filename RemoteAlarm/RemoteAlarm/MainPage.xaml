@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RemoteAlarm"
+             xmlns:widget="clr-namespace:Android.Widget;assembly=Mono.Android"
+             x:Class="RemoteAlarm.MainPage">
+
+    <StackLayout >
+        <!--<DatePicker x:Name="WeekPicker" PropertyChanged="WeekPicker_OnPropertyChanged" HorizontalOptions="Center" VerticalOptions="Center"  />-->
+        <TimePicker x:Name="AlarmPicker" PropertyChanged="TimePicker_OnPropertyChanged" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Scale="2"/>
+
+        <ListView x:Name="ListView" HasUnevenRows="True" HorizontalOptions="CenterAndExpand">    
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <SwitchCell Text="{Binding Weekday}" On="{Binding Active}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="0"  Text="Refresh" Clicked="Refresh_OnClicked" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"/>
+            <Button Grid.Column="1" Text="Apply" Clicked="Apply_OnClicked" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+        </Grid>
+    </StackLayout>
+    
+</ContentPage>
+
+
+
