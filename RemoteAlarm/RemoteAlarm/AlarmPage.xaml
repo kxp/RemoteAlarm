@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RemoteAlarm"
+             xmlns:widget="clr-namespace:Android.Widget;assembly=Mono.Android"
+             xmlns:converters="clr-namespace:RemoteAlarm.Converters;assembly=RemoteAlarm"
+             xmlns:global="clr-namespace:;assembly=RemoteAlarm"
+             x:Class="RemoteAlarm.AlarmPage"
+             >
+    <ContentPage.Resources>
+        <converters:FromEWeekDayToString x:Key="FromEWeekDayToString" />
+        <converters:FromEColorToString x:Key="FromEColorToString" />
+    </ContentPage.Resources>
+
+    <StackLayout >
+        <!--<DatePicker x:Name="WeekPicker" PropertyChanged="WeekPicker_OnPropertyChanged" HorizontalOptions="Center" VerticalOptions="Center"  />-->
+        <TimePicker x:Name="AlarmPicker" PropertyChanged="TimePicker_OnPropertyChanged" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Scale="2"/>
+
+        <ListView x:Name="ListView" HasUnevenRows="True" HorizontalOptions="StartAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <SwitchCell Text="{Binding Converter={StaticResource FromEWeekDayToString}}" On="{Binding Active}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Label Grid.Column="0" Text="Led Color" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" BackgroundColor="Red" />
+            <Picker Grid.Column="1" x:Name="SelectedColors" SelectedItem="{Binding Converter={StaticResource FromEColorToString}}" BackgroundColor="DodgerBlue"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="0"  Text="Refresh" Clicked="Refresh_OnClicked" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"/>
+            <Button Grid.Column="1" Text="Apply" Clicked="Apply_OnClicked" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+        </Grid>
+    </StackLayout>
+    
+</ContentPage>
+
+
+
+
+
+
+
