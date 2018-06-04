@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="test.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="test.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="3.0.0.446417" />
   </ItemGroup>
 
